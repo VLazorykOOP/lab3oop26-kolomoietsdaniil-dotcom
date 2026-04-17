@@ -129,7 +129,7 @@ void Task_1_8_Menu() {
             ofstream outFile(filename, ios::app);
             if (outFile.is_open()) {
                 if (outFile.tellp() == 0) {
-                    outFile << "15.5 255\n";
+                    outFile << "1 0\n";
                 }
                 outFile.close();
             }
@@ -319,7 +319,6 @@ void Task_2_8_Interactive() {
         cout << "6. Ділення (/)\n";
         cout << "7. Порівняння та Норма (модуль)\n";
         cout << "8. Ділення першого числа на ціле (short)\n";
-        cout << "9. Авто-тест конструкторів та пам'яті (Для викладача)\n";
         cout << "0. Вийти\n";
         cout << "Ваш вибір: ";
 
@@ -387,27 +386,6 @@ void Task_2_8_Interactive() {
             if (result.getState() == 2) cout << "[Увага] Відбулося ділення на нуль! Стан змінено.\n";
             break;
         }
-        case 9: {
-            // Блок у фігурних дужках створений спеціально, щоб показати роботу деструкторів
-            cout << "\n--- АВТО-ТЕСТ ПАМ'ЯТІ ТА КОНСТРУКТОРІВ ---\n";
-            cout << "Кількість об'єктів ДО тесту: " << MyComplex::objectCount << "\n";
-            {
-                float arr[2] = { 10.5f, -3.2f };
-                MyComplex cArray(arr);
-                cout << "Створено з масиву {10.5, -3.2}: "; cArray.Print();
-
-                MyComplex cNull(nullptr);
-                cout << "Створено з NULL вказівника: "; cNull.Print();
-
-                MyComplex cCopy = cArray;
-                cout << "Виклик конструктора копій: "; cCopy.Print();
-
-                cout << "Кількість об'єктів ПІД ЧАС тесту: " << MyComplex::objectCount << "\n";
-                cout << "Зараз об'єкти вийдуть з області видимості і спрацюють деструктори...\n";
-            }
-            cout << "Кількість об'єктів ПІСЛЯ тесту: " << MyComplex::objectCount << "\n";
-            break;
-        }
         case 0:
             cout << "Повернення до головного меню...\n";
             break;
@@ -429,7 +407,7 @@ int main() {
     do {
         cout << "\n================ ГОЛОВНЕ МЕНЮ =================\n";
         cout << "1. Задача 1.8 (Клас 'Круг')\n";
-        cout << "2. Задача 2.8 (Клас 'Комплексне число')\n"; // Додано новий пункт
+        cout << "2. Задача 2.8 (Клас 'Комплексне число')\n"; 
         cout << "0. Вихід з програми\n";
         cout << "===============================================\n";
         cout << "Ваш вибір: ";
@@ -443,10 +421,10 @@ int main() {
 
         switch (mainChoice) {
         case 1:
-            Task_1_8_Menu(); // Виклик підменю для задачі 1.8
+            Task_1_8_Menu(); 
             break;
         case 2:
-            Task_2_8_Interactive(); // Виклик тестів для задачі 2.8
+            Task_2_8_Interactive(); 
             break;
         case 0:
             cout << "Роботу завершено. До побачення!\n";
